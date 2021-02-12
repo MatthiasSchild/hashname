@@ -4,6 +4,11 @@ hashname
 hashname generates hashes of files and renames the files.
 This tool can be used to prevent duplicates in file collections.
 
+Install with Go
+---------------
+
+    go get github.com/MatthiasSchild/hashname
+
 Example
 -------
 

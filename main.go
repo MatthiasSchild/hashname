@@ -9,6 +9,17 @@ import (
 	"strings"
 )
 
+const usageText = `usage: hashname [--method <method>] [--ext] [--dry] <files...>
+
+Options:
+--method: Which hashing method should be used to generate the hash
+  available is: sha1, sha256, sha512, md5
+  default is: sha1
+--ext: Add the extension of the old file name
+--dry: Execute a dry run without renaming the files
+
+For more info, see: https://github.com/MatthiasSchild/hashname`
+
 func getFileList() []string {
 	var result []string
 	for _, arg := range flag.Args() {
@@ -39,6 +50,11 @@ func checkFileList(fileList []string) {
 }
 
 func main() {
+	if len(flag.Args()) == 0 {
+		fmt.Println(usageText)
+		return
+	}
+
 	fmt.Println("Use hashing method:", optionMethod)
 	fmt.Println("Keep extensions:", optionExtension)
 
